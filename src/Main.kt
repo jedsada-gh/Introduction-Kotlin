@@ -89,6 +89,17 @@ fun main(args: Array<String>) {
     println(email)
 
     user.filter(email20scoop).forEach { println(it.email) }
+
+    val username = user.map { email20scoop }
+    username.forEach { println(it) }
+
+    println(user.maxBy { it.id })
+
+    println(user.maxBy { it.id }?.username)
+
+    println(user.minBy { it.id }?.username)
+
+
     user.filterNot(email20scoop)
             .map(addStrTest)
             .forEach { println(it.username) }
