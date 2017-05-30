@@ -1,3 +1,5 @@
+import test.Test
+import test.test
 import test.test2
 
 sealed class UserResult
@@ -34,7 +36,9 @@ fun main(args: Array<String>) {
         is Failure -> print(result.message)
     }
 
-    test.Test().test()
+    test()
 
     test2()
+
+    Test().testInTest()
 }
