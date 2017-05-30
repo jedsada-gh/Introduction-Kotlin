@@ -2,6 +2,8 @@ import java.math.BigDecimal
 
 data class Money(val amount: BigDecimal, val currency: String)
 
+private val Int.bd: BigDecimal get() = BigDecimal(this)
+
 fun sendPayment(money: Money, message: String = "default") {
     println("Sending ${money.amount}" + "\t" + message)
 }
@@ -34,6 +36,14 @@ operator fun Money.minus(money: Money) =
             throw IllegalArgumentException("We're gonna have a problem here!")
         }
 
+var email20scoop = fun(users: User): Boolean {
+    return users.email.endsWith("20scoop.com")
+}
+
+val addStrTest = fun(user: User): User {
+    return User(user.id, user.username + "test", user.email)
+}
+
 fun main(args: Array<String>) {
 
     val tickets = Money(10.bd, "$")
@@ -63,6 +73,23 @@ fun main(args: Array<String>) {
 
     val costsMinus = tickets - apple
     println("${costsMinus.amount}")
-}
 
-private val Int.bd: BigDecimal get() = BigDecimal(this)
+    val train: Money = Money(amount = 100.bd, currency = "$")
+    println("$train")
+
+    val user = usersFromJSONFile("user.json")
+
+    val userScoop = user.filter { it.email.endsWith("@20scoops.com") }
+            .sortedBy { it.id }
+            .map { it.email to it.username }
+    println("$userScoop")
+
+    val (_, _, email) = user.filter { it.email.endsWith("@20scoops.com") }
+            .sortedBy { it.id }.first()
+    println(email)
+
+    user.filter(email20scoop).forEach { println(it.email) }
+    user.filterNot(email20scoop)
+            .map(addStrTest)
+            .forEach { println(it.username) }
+}
