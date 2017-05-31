@@ -44,6 +44,10 @@ val addStrTest = fun(user: User): User {
     return User(user.id, user.username + "test", user.email)
 }
 
+val testReduce = fun(user1: User, user2: User): User {
+    return User(user1.id + 1, user1.username, user1.email)
+}
+
 fun main(args: Array<String>) {
 
     val tickets = Money(10.bd, "$")
@@ -99,6 +103,7 @@ fun main(args: Array<String>) {
 
     println(user.minBy { it.id }?.username)
 
+    user.reduce(testReduce)
 
     user.filterNot(email20scoop)
             .map(addStrTest)
