@@ -1,7 +1,3 @@
-import test.Test
-import test.test
-import test.test2
-
 sealed class UserResult
 data class Success(val users: List<User>) : UserResult()
 data class Failure(val message: String) : UserResult()
@@ -35,10 +31,4 @@ fun main(args: Array<String>) {
         is Success -> result.users.forEach({ println(it.email) })
         is Failure -> print(result.message)
     }
-
-    test()
-
-    test2()
-
-    Test().testInTest()
 }
