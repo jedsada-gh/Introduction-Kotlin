@@ -68,16 +68,52 @@ open class A {
     }
 }
 
-class B : A() {
+open class B : A() {
     override fun a() {
         println("a in B")
         super.a()
     }
 }
 
-class C(val a: A, val b : B) {
+class C(val a: A, val b: B) : B() {
 
     fun somthigns() {
         a.a()
+    }
+}
+
+open class Human {
+
+}
+
+interface Humanable {
+    fun run()
+}
+
+class Student : Human(), Humanable {
+    override fun run() {
+        // TODO : somethings
+    }
+}
+
+fun main(args: Array<String>) {
+
+    for (i in 1..10) {
+        println(i)
+    }
+
+
+    val fruits = arrayListOf("Apple", "Banana", "Mango", "Avocado", "Coconut", "Durian")
+
+    fruits.forEach { println(it) }
+
+    fruits.forEachIndexed { index, value -> println("$value at index $index") }
+
+    for ((index, value) in fruits.withIndex()) {
+        println("$value at index $index")
+    }
+
+    for (value in fruits) {
+
     }
 }
