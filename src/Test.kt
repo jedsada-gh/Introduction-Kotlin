@@ -102,6 +102,10 @@ fun main(args: Array<String>) {
         println(i)
     }
 
+    val a = A()
+    val a1 = A()
+    val a2 = A()
+
 
     val fruits = arrayListOf("Apple", "Banana", "Mango", "Avocado", "Coconut", "Durian")
 
@@ -115,5 +119,23 @@ fun main(args: Array<String>) {
 
     for (value in fruits) {
 
+    }
+
+    val name: String? = null
+    println(name ?: "20Scoops CNX")
+
+    fun getName(): String? = null
+
+    var number: Int = 5
+
+    if ((number % 2) == 0) {
+        number += 2
+    } else {
+        number += 1
+    }
+
+    when (number % 2) {
+        0 -> number += 2
+        else -> number += 1
     }
 }
