@@ -96,46 +96,10 @@ class Student : Human(), Humanable {
     }
 }
 
+
+fun String.toBaht() = this.plus(" bath")
+
 fun main(args: Array<String>) {
-
-    for (i in 1..10) {
-        println(i)
-    }
-
-    val a = A()
-    val a1 = A()
-    val a2 = A()
-
-
-    val fruits = arrayListOf("Apple", "Banana", "Mango", "Avocado", "Coconut", "Durian")
-
-    fruits.forEach { println(it) }
-
-    fruits.forEachIndexed { index, value -> println("$value at index $index") }
-
-    for ((index, value) in fruits.withIndex()) {
-        println("$value at index $index")
-    }
-
-    for (value in fruits) {
-
-    }
-
-    val name: String? = null
-    println(name ?: "20Scoops CNX")
-
-    fun getName(): String? = null
-
-    var number: Int = 5
-
-    if ((number % 2) == 0) {
-        number += 2
-    } else {
-        number += 1
-    }
-
-    when (number % 2) {
-        0 -> number += 2
-        else -> number += 1
-    }
+    val price = "44"
+    println(price.toBaht())
 }
