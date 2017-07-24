@@ -1,3 +1,5 @@
+import com.google.gson.annotations.Until
+import com.google.gson.stream.JsonReader
 import java.lang.StringBuilder
 import java.util.*
 
@@ -96,10 +98,34 @@ class Student : Human(), Humanable {
     }
 }
 
-
 fun String.toBaht() = this.plus(" bath")
+
+infix fun Int.operator(func: Int.() -> Unit) {
+    try {
+        func()
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
 
 fun main(args: Array<String>) {
     val price = "44"
     println(price.toBaht())
+
+    val sum: (Int, Int) -> Int = { x, y -> x + y }
+    val sum1 = { x: Int, y: Int -> x + y }
+    println(sum(5, 5))
+    println(sum1(5, 5))
+
+    5 operator { div(0) }
 }
+
+//data class Lock<out T>(private val obj: T) {
+//    fun acquire(func: (T) -> Unit) {
+//        synchronized(obj!!) {
+//            func(obj)
+//        }
+//    }
+//}
+//
+//val readerLock = Lock(JsonReader(stream))
