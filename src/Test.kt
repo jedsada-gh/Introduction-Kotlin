@@ -112,6 +112,16 @@ fun main(args: Array<String>) {
     val price = "44"
     println(price.toBaht())
 
+
+    var profile = {
+        "name": "Jedsada",
+        "position": "Android Developer <3 Kotlin",
+        "age": "2x",
+        "website: "https://medium.com/@pondthaitay"
+    }
+
+    print(profile)
+
     val sum: (Int, Int) -> Int = { x, y -> x + y }
     val sum1 = { x: Int, y: Int -> x + y }
     println(sum(5, 5))
